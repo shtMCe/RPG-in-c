@@ -1,7 +1,18 @@
 #include <stdio.h>
 #include <locale.h>
-#include <windows.h>
 #include <string.h>
+#include <locale.h>
+
+/*a próxima biblioteca foi ultilizada depois de pesquisas
+para as pausas funcionarem em alguns sistemas operacionais*/
+#ifdef _WIN32
+    #include <windows.h>
+    #define pausa(segundos) Sleep(segundos * 1000)
+#else
+    #include <unistd.h>
+    #define pausa(segundos) sleep(segundos)
+#endif
+
 
 typedef struct sHeroi {
     char NOME[50];
@@ -125,10 +136,10 @@ int main() {
         int escolha1;
 
         printf("*Andando...*\n");
-        Sleep(1000);
+        sleep(2);
 
         printf("*Avista uma criança à frente*\n");
-        Sleep(1000);
+        sleep(2);
 
         printf("CRIANÇA: 'Olá bom moço(a), poderia me ajudar?'\n");
 
@@ -144,6 +155,7 @@ int main() {
             printf("Parabéns!\n");
             printf("Seu herói ganhou 5 moedas\n");
             heroiescolhido.moedas += 5;
+            sleep(2);
         }
 
         else if (escolha1 == 2) {
@@ -153,6 +165,7 @@ int main() {
 
             heroiescolhido.moedas -= 5;
             heroiescolhido.VIDA -= 5;
+            sleep(2);
         }
 
         printf("------------------------------\n");
@@ -163,14 +176,14 @@ int main() {
 
         printf("------------------------------\n");
 
-        Sleep(2000);
+        sleep(2);
 
         printf("*Continuando sua caminhada...*\n");
 
         printf("%s: 'Estou com fome, vamos procurar algo para comer.'\n",
                heroiescolhido.NOME);
 
-        printf("Olhando ao redor, percebe-se uma loja de armas.\n");
+        printf("Olhando ao redor, percebe uma loja de armas.\n");
 
         int escolha2;
 
@@ -186,16 +199,17 @@ int main() {
         if (escolha2 == 1) {
 
             printf("------------------------------\n");
-            printf("ARMAS DISPONÍVEIS:\n");
-            printf("1 - Lâmina do Crepúsculo\n");
-            printf("2 - Arco da Aurora\n");
-            printf("3 - Poção que recupera vida\n");
+            printf("SEM ARMAS DISPONÍVEIS NO NÍVEL 1!\n");
+            printf("------------------------------\n");
         }
+        
+        printf("NÍVEL 1 FINALIZADO\n");
+        printf("------------------------------\n\n");
     }
 
     // ESCOLHA 2 - Floresta Sombria
     else if (ESCOLHA_LUGAR == 2) {
-
+        
     }
 
     // ESCOLHA 3 - Montanha de Ferro
