@@ -86,7 +86,7 @@ int main() {
 
     } while (ESCOLHA_HEROI > 3 || ESCOLHA_HEROI < 1);
 
-    printf("Boa escolha guerreiro!\n");
+    printf("Boa escolha guerreiro(a)!\n");
 
     // ESCOLHA 1 - GAEL
     if (ESCOLHA_HEROI == 1) {
@@ -203,6 +203,7 @@ int main() {
             printf("------------------------------\n");
         }
         
+        printf("------------------------------\n");
         printf("NÍVEL 1 FINALIZADO\n");
         printf("------------------------------\n\n");
     }
@@ -210,6 +211,39 @@ int main() {
     // ESCOLHA 2 - Floresta Sombria
     else if (ESCOLHA_LUGAR == 2) {
         
+        printf("*andando\n");
+        printf("*olhando as colinas e as montanhas através de uma fresta da árvore\n");
+        sleep(2);
+        printf("*quando você volta seu olhar a frente se depara com uma figura...\n");
+        printf("%s: 'Uma fada, não sabia que ainda estão aqui após a guerra dorparia'\n", heroiescolhido.nome);
+        sleep(1);
+        printf("GENARI: 'Viajante da floresta?'\n'Tome cuidado, as criaturas estão rondando hoje'\n");
+        printf("------------------------------\n");
+        
+        int escolha3;
+        
+        do {
+            printf("Qual será sua decisão?\n1- Continuar andando    2- Voltar e escolher outro lugar\n");
+            scanf("%d", &escolha3);
+            
+        } while (escolha3 != 1 || escolha != 2);
+        
+        //continuar andando
+        if (escolha3 == 1) {
+            printf("*andando\n");
+        }
+        
+        //voltar para escolher outro lugar 
+        else {
+            printf("*voltando\n");
+            printf("*aparece Britus (um monstro com aparencia de largato gigante)\n");
+            printf("BRITUS: 'ora..ora...ora...se não é o(a) %s", heroiescolhido.nome);
+            printf("BRITUS: 'já ouvi falar muito sobre você, está aqui HAHAHA\n'");
+            printf("BRITUS: 'prepare-se para morrer!\n'");
+            printf("------------------------------\n");
+            
+        }
+
     }
 
     // ESCOLHA 3 - Montanha de Ferro
