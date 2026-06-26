@@ -1,116 +1,207 @@
 #include <stdio.h>
+#include <locale.h>
+#include <windows.h>
 #include <string.h>
 
 typedef struct sHeroi {
-	char NOME[50];
-	int VIDA;
-	int ATAQUE;
-	int DEFESA;
-	char HABILIDADE[100];
+    char NOME[50];
+    int VIDA;
+    int ATAQUE;
+    int DEFESA;
+    char HABILIDADE[100];
+    int moedas;
 } Heroi;
 
 typedef struct sInimigo {
-	char NOME[50];
-	int VIDA;
-	int ATAQUE;
-	int DEFESA;
+    char NOME[50];
+    int VIDA;
+    int ATAQUE;
+    int DEFESA;
 } Inimigo;
 
-void EXIBE_HEROIS () {
+void EXIBE_HEROIS() {
 
-	printf("1 - GAEL, O GUERREIRO\n");
-	printf("VIDA: 120\n ATAQUE: 15\n DEFESA: 20\n");
-	printf("HABILIDADE: Defesa de anjo\n");
-	printf("------------------------------\n");
+    printf("1 - GAEL, O GUERREIRO\n");
+    printf("VIDA: 120\nATAQUE: 15\nDEFESA: 20\n");
+    printf("HABILIDADE: Defesa de anjo\n");
+    printf("------------------------------\n");
 
-	printf("2 - LYRA, A MAGA\n");
-	printf("VIDA: 80\n ATAQUE: 25\n DEFESA: 5\n");
-	printf("HABILIDADE: Bola de fogo\n");
-	printf("------------------------------\n");
+    printf("2 - LYRA, A MAGA\n");
+    printf("VIDA: 80\nATAQUE: 25\nDEFESA: 5\n");
+    printf("HABILIDADE: Bola de fogo\n");
+    printf("------------------------------\n");
 
-	printf("3 - RAVEN, A ARQUEIRA\n");
-	printf("VIDA: 95\n ATAQUE: 20\n DEFESA: 8\n");
-	printf("HABILIDADE: Flecha dupla\n");
-	printf("------------------------------\n");
+    printf("3 - RAVEN, A ARQUEIRA\n");
+    printf("VIDA: 95\nATAQUE: 20\nDEFESA: 8\n");
+    printf("HABILIDADE: Flecha dupla\n");
+    printf("------------------------------\n");
 }
 
-
-int Batalha ( int vidaHeroi, int defesaHeroi, int ataqueVilao) {
-	defesaHeroi *= 0.8;
-	vidaHeroi -=  ataqueVilao - defesaHeroi;
-	return vidaHeroi;
+void IMPRIME_SITU(int x, int y) {
+    printf("VIDA: %d\n", x);
+    printf("MOEDAS: %d\n", y);
 }
 
-int main () {
+int main() {
 
-	int TECLA_INICIO;
+    Heroi heroiescolhido;
 
-	do {
-		printf("\n\n------------------------------\n");
-		printf("------BEM VINDO AO JOGO-------\n");
-		printf("------------------------------\n\n");
-		printf("Aperte '1' para comecar: ");
-		scanf("%d", &TECLA_INICIO);
+    heroiescolhido.moedas = 100;
 
-		if (TECLA_INICIO != 1)
-			printf("Tecla invalida, tente novamente");
+    setlocale(LC_ALL, "");
 
-	} while (TECLA_INICIO != 1);
+    int TECLA_INICIO;
 
-	int ESCOLHA_HEROI;
+    do {
+        printf("\n\n------------------------------\n");
+        printf("------BEM VINDO AO JOGO-------\n");
+        printf("------------------------------\n\n");
+        printf("Aperte '1' para começar: ");
+        scanf("%d", &TECLA_INICIO);
 
-	do {
-		printf("------------------------------\n\n");
-		printf("Escolha seu heroi:\n");
+        if (TECLA_INICIO != 1)
+            printf("Tecla inválida, tente novamente\n");
 
-		EXIBE_HEROIS();
-		scanf("%d", &ESCOLHA_HEROI);
+    } while (TECLA_INICIO != 1);
 
-	} while (ESCOLHA_HEROI > 3 || ESCOLHA_HEROI < 1);
+    int ESCOLHA_HEROI;
 
-	printf("Boa escolha guerreiro!\n");
-    
+    do {
+        printf("------------------------------\n\n");
+        printf("Escolha seu herói:\n");
+
+        EXIBE_HEROIS();
+        scanf("%d", &ESCOLHA_HEROI);
+
+    } while (ESCOLHA_HEROI > 3 || ESCOLHA_HEROI < 1);
+
+    printf("Boa escolha guerreiro!\n");
+
+    // ESCOLHA 1 - GAEL
+    if (ESCOLHA_HEROI == 1) {
+        strcpy(heroiescolhido.NOME, "GAEL");
+        heroiescolhido.VIDA = 120;
+        heroiescolhido.ATAQUE = 15;
+        heroiescolhido.DEFESA = 20;
+        strcpy(heroiescolhido.HABILIDADE, "Defesa de anjo");
+    }
+
+    // ESCOLHA 2 - LYRA
+    else if (ESCOLHA_HEROI == 2) {
+        strcpy(heroiescolhido.NOME, "LYRA");
+        heroiescolhido.VIDA = 80;
+        heroiescolhido.ATAQUE = 25;
+        heroiescolhido.DEFESA = 5;
+        strcpy(heroiescolhido.HABILIDADE, "Bola de fogo");
+    }
+
+    // ESCOLHA 3 - RAVEN
+    else if (ESCOLHA_HEROI == 3) {
+        strcpy(heroiescolhido.NOME, "RAVEN");
+        heroiescolhido.VIDA = 95;
+        heroiescolhido.ATAQUE = 20;
+        heroiescolhido.DEFESA = 8;
+        strcpy(heroiescolhido.HABILIDADE, "Flecha dupla");
+    }
+
     int ESCOLHA_LUGAR;
-    
-	do {
-		printf("------------------------------\n\n");
 
-		printf("Um mundo a explorar...\n");
-		printf("1 - Vila Eldoria\n");
-		printf("2 - Floresta Sombria\n");
-		printf("3 - Montanha de Ferro\n");
-		printf("Qual sera seu caminho hoje?\n");
+    do {
+        printf("------------------------------\n\n");
 
-		scanf("%d", &ESCOLHA_LUGAR);
-		
-	} while (ESCOLHA_LUGAR > 3 || ESCOLHA_LUGAR < 1);
-	
-	if (ESCOLHA_LUGAR == 1) {
-	    
-	}
-	else if (ESCOLHA_LUGAR == 2) {
-	    
-	}
-	else if (ESCOLHA_LUGAR == 3) {
-	    
-	}
-	
-	
-	
-	//ESCOLHA 1 - GAEL
-	if (ESCOLHA_HEROI == 1) {
+        printf("Um mundo a explorar...\n");
+        printf("1 - Vila Eldoria\n");
+        printf("2 - Floresta Sombria\n");
+        printf("3 - Montanha de Ferro\n");
+        printf("Qual será seu caminho hoje?\n");
 
-	}
+        scanf("%d", &ESCOLHA_LUGAR);
 
-	//ESCOLHA 2 - LYRA
-	else if (ESCOLHA_HEROI == 2) {
+    } while (ESCOLHA_LUGAR > 3 || ESCOLHA_LUGAR < 1);
 
-	}
+    // ESCOLHA 1 - Vila Eldoria
+    if (ESCOLHA_LUGAR == 1) {
 
-	//ESCOLHA 3 - RAVEN
-	else  {
+        int escolha1;
 
-	}
+        printf("*Andando...*\n");
+        Sleep(1000);
 
+        printf("*Avista uma criança à frente*\n");
+        Sleep(1000);
 
+        printf("CRIANÇA: 'Olá bom moço(a), poderia me ajudar?'\n");
+
+        do {
+            printf("Qual sua escolha?\n");
+            printf("1 - ajudar\n");
+            printf("2 - ignorar\n");
+            scanf("%d", &escolha1);
+
+        } while (escolha1 > 2 || escolha1 < 1);
+
+        if (escolha1 == 1) {
+            printf("Parabéns!\n");
+            printf("Seu herói ganhou 5 moedas\n");
+            heroiescolhido.moedas += 5;
+        }
+
+        else if (escolha1 == 2) {
+            printf("Era uma emboscada, assim que você não ajudou a criança...\n");
+            printf("Alguns homens apareceram para te roubar.\n");
+            printf("Você tentou lutar, mas perdeu 5 de vida e 5 moedas.\n");
+
+            heroiescolhido.moedas -= 5;
+            heroiescolhido.VIDA -= 5;
+        }
+
+        printf("------------------------------\n");
+
+        printf("Após essa escolha, veja a situação do seu herói:\n");
+
+        IMPRIME_SITU(heroiescolhido.VIDA, heroiescolhido.moedas);
+
+        printf("------------------------------\n");
+
+        Sleep(2000);
+
+        printf("*Continuando sua caminhada...*\n");
+
+        printf("%s: 'Estou com fome, vamos procurar algo para comer.'\n",
+               heroiescolhido.NOME);
+
+        printf("Olhando ao redor, percebe-se uma loja de armas.\n");
+
+        int escolha2;
+
+        do {
+            printf("Deseja entrar para comprar alguma arma?\n");
+            printf("1 - Sim\n");
+            printf("2 - Não\n");
+
+            scanf("%d", &escolha2);
+
+        } while (escolha2 > 2 || escolha2 < 1);
+
+        if (escolha2 == 1) {
+
+            printf("------------------------------\n");
+            printf("ARMAS DISPONÍVEIS:\n");
+            printf("1 - Lâmina do Crepúsculo\n");
+            printf("2 - Arco da Aurora\n");
+            printf("3 - Poção que recupera vida\n");
+        }
+    }
+
+    // ESCOLHA 2 - Floresta Sombria
+    else if (ESCOLHA_LUGAR == 2) {
+
+    }
+
+    // ESCOLHA 3 - Montanha de Ferro
+    else if (ESCOLHA_LUGAR == 3) {
+
+    }
+
+    return 0;
 }
