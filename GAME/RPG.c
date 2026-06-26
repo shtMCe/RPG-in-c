@@ -27,7 +27,6 @@ typedef struct sInimigo {
     char NOME[50];
     int VIDA;
     int ATAQUE;
-    int DEFESA;
 } Inimigo;
 
 void EXIBE_HEROIS() {
@@ -53,13 +52,31 @@ void IMPRIME_SITU(int x, int y) {
     printf("MOEDAS: %d\n", y);
 }
 
-void LUTA ( Inimigo i, Heroi h ) {
+int LUTA ( int vida_inimigo, int ataque_inimigo, int vida_heroi, int ataque_heroi, int defesa_heroi ) {
     
+    if (vida_inimigo >= 0){
+        defesa_heroi *= 0.8;
+        ataque_inimigo *= 0.8;
+        vida_heroi -= ataque_inimigo;
+        vida_inimigo -= ataque_heroi;
+    
+        printf("---------HERÓI-----------\n");
+        printf("VIDA HERÓI: %d\n", vida_heroi);
+        printf("DEFESA HERÓI: %d\n", defesa_heroi);
+        printf("------------------------------\n");
+        printf("---------INIMIGO-----------\n");
+        printf("VIDA INIMIGO: %d\n", vida_inimigo);
+        printf("------------------------------\n");
+        
+        return vida_inimigo;
+    } 
 }
 
 int main() {
 
     Heroi heroiescolhido;
+    
+    Inimigo BRITUS;
 
     heroiescolhido.moedas = 100;
 
@@ -96,7 +113,7 @@ int main() {
     if (ESCOLHA_HEROI == 1) {
         strcpy(heroiescolhido.NOME, "GAEL");
         heroiescolhido.VIDA = 120;
-        heroiescolhido.ATAQUE = 15;
+        heroiescolhido.ATAQUE = 40;
         heroiescolhido.DEFESA = 20;
         strcpy(heroiescolhido.HABILIDADE, "Defesa de anjo");
     }
@@ -105,7 +122,7 @@ int main() {
     else if (ESCOLHA_HEROI == 2) {
         strcpy(heroiescolhido.NOME, "LYRA");
         heroiescolhido.VIDA = 80;
-        heroiescolhido.ATAQUE = 25;
+        heroiescolhido.ATAQUE = 45;
         heroiescolhido.DEFESA = 5;
         strcpy(heroiescolhido.HABILIDADE, "Bola de fogo");
     }
@@ -114,10 +131,15 @@ int main() {
     else if (ESCOLHA_HEROI == 3) {
         strcpy(heroiescolhido.NOME, "RAVEN");
         heroiescolhido.VIDA = 95;
-        heroiescolhido.ATAQUE = 20;
+        heroiescolhido.ATAQUE = 38;
         heroiescolhido.DEFESA = 8;
         strcpy(heroiescolhido.HABILIDADE, "Flecha dupla");
     }
+    
+    //CRIAÇÃO DO BRITUS (VILÃO FUTURO)
+    strcpy(BRITUS.NOME, "BRITUS");
+    BRITUS.VIDA = 10;
+    BRITUS.ATAQUE = 8;
 
     int ESCOLHA_LUGAR;
 
@@ -221,7 +243,7 @@ int main() {
         printf("*quando você volta seu olhar a frente se depara com uma figura...\n");
         printf("%s: 'Uma fada, não sabia que ainda estão aqui após a guerra dorparia'\n", heroiescolhido.NOME);
         sleep(1);
-        printf("GENARI: 'Viajante da floresta? Tome cuidado, as criaturas estão rondando hoje'\n");
+        printf("FADA GENARI: 'Viajante da floresta?'\nFADA GENARI: 'Tome cuidado, as criaturas estão rondando hoje'\n");
         printf("------------------------------\n");
         
         int escolha3;
@@ -248,6 +270,13 @@ int main() {
             printf("BRITUS: 'prepare-se para morrer!'\n");
             printf("------------------------------\n");
             
+            //int vida_inimigo, int ataque_inimigo, int vida_heroi, int ataque_heroi, int defesa_heroi 
+            
+            while (BRITUS.VIDA > 0){
+                
+                if (BRITUS.VIDA >= 0)
+                    LUTA(BRITUS.VIDA, BRITUS.ATAQUE, heroiescolhido.VIDA, heroiescolhido.ATAQUE, heroiescolhido.DEFESA);
+            }
         }
 
     }
