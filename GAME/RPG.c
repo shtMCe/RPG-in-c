@@ -215,9 +215,9 @@ int main() {
         printf("*olhando as colinas e as montanhas através de uma fresta da árvore\n");
         sleep(2);
         printf("*quando você volta seu olhar a frente se depara com uma figura...\n");
-        printf("%s: 'Uma fada, não sabia que ainda estão aqui após a guerra dorparia'\n", heroiescolhido.nome);
+        printf("%s: 'Uma fada, não sabia que ainda estão aqui após a guerra dorparia'\n", heroiescolhido.NOME);
         sleep(1);
-        printf("GENARI: 'Viajante da floresta?'\n'Tome cuidado, as criaturas estão rondando hoje'\n");
+        printf("GENARI: 'Viajante da floresta? Tome cuidado, as criaturas estão rondando hoje'\n");
         printf("------------------------------\n");
         
         int escolha3;
@@ -226,19 +226,21 @@ int main() {
             printf("Qual será sua decisão?\n1- Continuar andando    2- Voltar e escolher outro lugar\n");
             scanf("%d", &escolha3);
             
-        } while (escolha3 != 1 || escolha != 2);
+        } while (escolha3 < 1 || escolha3 > 2);
         
         //continuar andando
         if (escolha3 == 1) {
             printf("*andando\n");
+            printf("");
         }
         
         //voltar para escolher outro lugar 
         else {
             printf("*voltando\n");
-            printf("*aparece Britus (um monstro com aparencia de largato gigante)\n");
-            printf("BRITUS: 'ora..ora...ora...se não é o(a) %s", heroiescolhido.nome);
-            printf("BRITUS: 'já ouvi falar muito sobre você, está aqui HAHAHA\n'");
+            printf("*aparece Britus (um monstro com aparência de largato gigante)\n");
+            printf("BRITUS: 'ora..ora...ora...se não é o(a) %stodo mundo pode as 14?\n", heroiescolhido.NOME);
+            printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA\n'");
+            sleep(2);
             printf("BRITUS: 'prepare-se para morrer!\n'");
             printf("------------------------------\n");
             
