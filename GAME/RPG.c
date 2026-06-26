@@ -242,10 +242,10 @@ int main() {
         else {
             printf("*voltando\n");
             printf("*aparece Britus (um monstro com aparência de largato gigante)\n");
-            printf("BRITUS: 'ora..ora...ora...se não é o(a) %stodo mundo pode as 14?\n", heroiescolhido.NOME);
-            printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA\n'");
+            printf("BRITUS: 'ora..ora...ora...se não é o(a) %s'\n", heroiescolhido.NOME);
+            printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA'\n");
             sleep(2);
-            printf("BRITUS: 'prepare-se para morrer!\n'");
+            printf("BRITUS: 'prepare-se para morrer!'\n");
             printf("------------------------------\n");
             
         }
