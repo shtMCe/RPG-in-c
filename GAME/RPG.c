@@ -53,6 +53,10 @@ void IMPRIME_SITU(int x, int y) {
     printf("MOEDAS: %d\n", y);
 }
 
+void LUTA ( Inimigo i, Heroi h ) {
+    
+}
+
 int main() {
 
     Heroi heroiescolhido;
