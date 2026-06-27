@@ -291,14 +291,14 @@ int main() {
 		printf("*andando em direção ao brilho.\n");
 		sleep(2);
 		printf("Algo está brilhando...\n");
-        sleep(2);
-        printf("------------------------------\n");
-        printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
-        printf("------------------------------\n");
-        
-        sleep(2);
+		sleep(2);
+		printf("------------------------------\n");
+		printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
+		printf("------------------------------\n");
+
+		sleep(2);
 		limparTela();
-		       
+
 		printf("------------------------------\n");
 		printf("NÍVEL 1 FINALIZADO\n");
 		printf("------------------------------\n\n");
@@ -335,7 +335,7 @@ int main() {
 		if (escolha3 == 1) {
 			printf("*andando\n");
 			printf("");
-			
+
 			//batalha BRITUS
 			printf("!!!!!!!!BATALHA!!!!!!!\n\n");
 			printf("Aperte uma tecla para batalhar: ");
@@ -357,67 +357,68 @@ int main() {
 
 				if (BRITUS.VIDA <= 0)
 					printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
-		}
-
-		//voltar para escolher outro lugar
-		else {
-			printf("*voltando\n");
-			printf("*aparece Britus (um monstro com aparência de uma pedra gigante)\n");
-			sleep(2);
-			printf("BRITUS: 'ora..ora...ora...se não é o(a) %s'\n", heroiescolhido.NOME);
-			sleep(2);
-			printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA'\n");
-			sleep(2);
-			printf("BRITUS: 'prepare-se para morrer!'\n\n");
-			sleep(2);
-			printf("!!!!!!!!BATALHA!!!!!!!\n\n");
-			printf("Aperte uma tecla para batalhar: ");
-			getchar();
-			scanf("%c", &teclabatalha);
-			printf("\n");
-
-
-			if ( teclabatalha != '\0') {
-
-				while (BRITUS.VIDA > 0) {
-					BRITUS.VIDA = LUTA (
-					                  BRITUS.VIDA,
-					                  BRITUS.ATAQUE,
-					                  heroiescolhido.VIDA,
-					                  heroiescolhido.ATAQUE,
-					                  heroiescolhido.DEFESA);
-				}
-
-				if (BRITUS.VIDA <= 0)
-					printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
 			}
+
+			//voltar para escolher outro lugar
+			else {
+				printf("*voltando\n");
+				printf("*aparece Britus (um monstro com aparência de uma pedra gigante)\n");
+				sleep(2);
+				printf("BRITUS: 'ora..ora...ora...se não é o(a) %s'\n", heroiescolhido.NOME);
+				sleep(2);
+				printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA'\n");
+				sleep(2);
+				printf("BRITUS: 'prepare-se para morrer!'\n\n");
+				sleep(2);
+				printf("!!!!!!!!BATALHA!!!!!!!\n\n");
+				printf("Aperte uma tecla para batalhar: ");
+				getchar();
+				scanf("%c", &teclabatalha);
+				printf("\n");
+
+
+				if ( teclabatalha != '\0') {
+
+					while (BRITUS.VIDA > 0) {
+						BRITUS.VIDA = LUTA (
+						                  BRITUS.VIDA,
+						                  BRITUS.ATAQUE,
+						                  heroiescolhido.VIDA,
+						                  heroiescolhido.ATAQUE,
+						                  heroiescolhido.DEFESA);
+					}
+
+					if (BRITUS.VIDA <= 0)
+						printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
+				}
+			}
+
+			printf("*algo cai do bolso de BRITUS após sua violenta queda ao chão\n");
+			sleep(2);
+			printf("*você se aproxima e observa\n");
+			sleep(2);
+			printf("%s: 'Um saco de balas?'\n", heroiescolhido.NOME);
+			sleep(2);
+			printf("Porém, ao observar atentamente....\n");
+			sleep(2);
+			printf("%s: 'O CRISTAL! NÃO POSSO ACREDITAR.\n", heroiescolhido.NOME);
+			sleep(2);
+			printf("------------------------------\n");
+			printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
+			printf("------------------------------\n");
+
+			sleep(3);
+
+			limparTela();
+
+			printf("------FIM DO NÍVEL 1------\n");
 		}
-		
-		printf("*algo cai do bolso de BRITUS após sua violenta queda ao chão\n");
-		sleep(2);
-		printf("*você se aproxima e observa\n");
-		sleep(2);
-		printf("%s: 'Um saco de balas?'\n", heroiescolhido.NOME);
-		sleep(2);
-		printf("Porém, ao observar atentamente....\n");
-		sleep(2);
-		printf("%s: 'O CRISTAL! NÃO POSSO ACREDITAR.\n", heroiescolhido.NOME);
-		sleep(2);
-        printf("------------------------------\n");
-        printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
-        printf("------------------------------\n");
 
-		sleep(3);
+		// ESCOLHA 3 - Montanha de Ferro
+		else if (ESCOLHA_LUGAR == 3) {
 
-		limparTela();
+		}
 
-		printf("------FIM DO NÍVEL 1------\n");
+		return 0;
 	}
-
-	// ESCOLHA 3 - Montanha de Ferro
-	else if (ESCOLHA_LUGAR == 3) {
-
-	}
-
-	return 0;
 }
