@@ -512,7 +512,7 @@ int main() {
 
 			while (tentativas < 3) {
 
-				printf("VOCÊ TEM %d TENTATIVAS!\n\n", &tentativas);
+				printf("VOCÊ TEM %d TENTATIVAS!\n\n", tentativas);
 
 				do {
 
