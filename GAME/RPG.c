@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <locale.h>
-#include <string.h>
-#include <locale.h>
-#include <stdlib.h>
+#include <stdio.h> //adição de bibliotecas
+#include <locale.h> //adição de bibliotecas
+#include <string.h> //adição de bibliotecas
+#include <locale.h> //adição de bibliotecas
+#include <stdlib.h> //adição de bibliotecas
 
 /*a próxima biblioteca foi ultilizada depois de pesquisas
 para as pausas funcionarem em alguns sistemas operacionais*/
@@ -93,9 +93,6 @@ int LUTA ( int vida_inimigo, int ataque_inimigo, int vida_heroi, int ataque_hero
 
 		return vida_inimigo;
 	}
-
-	else
-		return 0;
 }
 
 int main() {
@@ -106,13 +103,14 @@ int main() {
 
 	heroiescolhido.moedas = 100;
 
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, ""); //para a função de acentuações funcionar
 
 	char teclabatalha = '\0';
 
 	int TECLA_INICIO;
 
 	do {
+
 		printf("\n\n------------------------------\n");
 		printf("------BEM VINDO AO JOGO-------\n");
 		printf("------------------------------\n\n");
@@ -122,22 +120,25 @@ int main() {
 		if (TECLA_INICIO != 1)
 			printf("Tecla inválida, tente novamente\n");
 
+		else if (TECLA_INICIO == 1) {
+
+			getchar();
+
+			printf("Há muitos anos existia o Cristal de Dorparia,");
+			sleep(2);
+			printf("responsável por manter o equilíbrio entre as terras de Eldoria.\n");
+			sleep(2);
+			printf("Durante a Guerra de Dorparia, o cristal foi destruído em três fragmentos e espalhado pelo mundo.\n");
+			sleep(3);
+			printf("Agora um antigo senhor das trevas, Malthor, está reunindo esses fragmentos para dominar o reino.\n");
+			sleep(3);
+			printf("O herói é escolhido para encontrar os três fragmentos antes dele.\nCada mapa guarda um fragmento...\n");
+			sleep(3);
+			printf("Boa jornada! E não se esqueça: CADA MAPA GUARDA UM FRAGMENTO\n");
+			sleep(3);
+		}
+
 	} while (TECLA_INICIO != 1);
-
-	getchar();
-
-	printf("Há muitos anos existia o Cristal de Dorparia,");
-	sleep(2);
-	printf("responsável por manter o equilíbrio entre as terras de Eldoria.\n");
-	sleep(2);
-	printf("Durante a Guerra de Dorparia, o cristal foi destruído em três fragmentos e espalhado pelo mundo.\n");
-	sleep(3);
-	printf("Agora um antigo senhor das trevas, Malthor, está reunindo esses fragmentos para dominar o reino.\n");
-	sleep(3);
-	printf("O herói é escolhido para encontrar os três fragmentos antes dele.\nCada mapa guarda um fragmento...\n");
-	sleep(3);
-	printf("Boa jornada! E não se esqueça: CADA MAPA GUARDA UM FRAGMENTO\n");
-	sleep(3);
 
 	limparTela();
 
@@ -190,178 +191,171 @@ int main() {
 
 	int ESCOLHA_LUGAR;
 
-	do {
-		printf("------------------------------\n\n");
 
-		printf("Um mundo a explorar...\n");
-		printf("1 - Vila Eldoria\n");
-		printf("2 - Floresta Sombria\n");
-		printf("3 - Montanha de Ferro\n");
-		printf("Qual será seu caminho hoje?\n");
-
-		scanf("%d", &ESCOLHA_LUGAR);
-
-	} while (ESCOLHA_LUGAR > 3 || ESCOLHA_LUGAR < 1);
-
-	limparTela();
-
-	// ESCOLHA 1 - Vila Eldoria
-	if (ESCOLHA_LUGAR == 1) {
-
-		int escolha1;
-
-		printf("*Andando...*\n");
-		sleep(2);
-
-		printf("*Avista uma criança à frente*\n");
-		sleep(2);
-
-		printf("CRIANÇA: 'Olá bom moço(a), poderia me ajudar?'\n");
+	for (int i=0; i < 3; i++) {
 
 		do {
-			printf("Qual sua escolha?\n");
-			printf("1 - ajudar\n");
-			printf("2 - ignorar\n");
-			scanf("%d", &escolha1);
+			printf("------------------------------\n\n");
 
-		} while (escolha1 > 2 || escolha1 < 1);
+			printf("Um mundo a explorar...\n");
+			printf("1 - Vila Eldoria\n");
+			printf("2 - Floresta Sombria\n");
+			printf("3 - Montanha de Ferro\n");
+			printf("Qual será seu caminho hoje?\n");
 
-		if (escolha1 == 1) {
-			printf("Parabéns!\n");
-			printf("Seu herói ganhou 5 moedas\n");
-			heroiescolhido.moedas += 5;
+			scanf("%d", &ESCOLHA_LUGAR);
+
+		} while (ESCOLHA_LUGAR > 3 || ESCOLHA_LUGAR < 1);
+
+		limparTela();
+
+		// ESCOLHA 1 - Vila Eldoria
+		if (ESCOLHA_LUGAR == 1) {
+
+			int escolha1;
+
+			printf("*Andando...*\n");
 			sleep(2);
-		}
 
-		else if (escolha1 == 2) {
-			printf("Era uma emboscada, assim que você não ajudou a criança...\n");
-			printf("Alguns homens apareceram para te roubar.\n");
-			printf("Você tentou lutar, mas perdeu 5 de vida e 5 moedas.\n");
-
-			heroiescolhido.moedas -= 5;
-			heroiescolhido.VIDA -= 5;
+			printf("*Avista uma criança à frente*\n");
 			sleep(2);
-		}
 
-		limparTela();
+			printf("CRIANÇA: 'Olá bom moço(a), poderia me ajudar?'\n");
 
-		printf("------------------------------\n");
+			do {
+				printf("Qual sua escolha?\n");
+				printf("1 - ajudar\n");
+				printf("2 - ignorar\n");
+				scanf("%d", &escolha1);
 
-		printf("Após essa escolha, veja a situação do seu herói:\n");
+			} while (escolha1 > 2 || escolha1 < 1);
 
-		IMPRIME_SITU(heroiescolhido.VIDA, heroiescolhido.moedas);
-
-		printf("------------------------------\n");
-
-		sleep(2);
-
-		limparTela();
-
-		printf("*Continuando sua caminhada...*\n");
-
-		printf("%s: 'Estou com fome, vamos procurar algo para comer.'\n",
-		       heroiescolhido.NOME);
-
-		printf("Olhando ao redor, percebe uma loja de armas.\n");
-
-		int escolha2;
-
-		do {
-			printf("Deseja entrar para comprar alguma arma?\n");
-			printf("1 - Sim\n");
-			printf("2 - Não\n");
-
-			scanf("%d", &escolha2);
-
-		} while (escolha2 > 2 || escolha2 < 1);
-
-		if (escolha2 == 1) {
-
-			printf("------------------------------\n");
-			printf("SEM ARMAS DISPONÍVEIS NO NÍVEL 1!\n");
-			printf("------------------------------\n");
-		}
-
-		limparTela();
-
-		printf("Ao olhar para os lados, um brilho encontra seu olho.\n");
-		sleep(2);
-		printf("%s: 'O que será isso?'\n", heroiescolhido.NOME);
-		sleep(2);
-		printf("*andando em direção ao brilho.\n");
-		sleep(2);
-		printf("Algo está brilhando...\n");
-		sleep(2);
-		printf("------------------------------\n");
-		printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
-		printf("------------------------------\n");
-
-		sleep(2);
-		limparTela();
-
-		printf("------------------------------\n");
-		printf("NÍVEL 1 FINALIZADO\n");
-		printf("------------------------------\n\n");
-	}
-
-	// ESCOLHA 2 - Floresta Sombria
-	else if (ESCOLHA_LUGAR == 2) {
-
-		printf("*andando\n");
-		sleep(2);
-		printf("*olhando as colinas e as montanhas através de uma fresta da árvore\n");
-		sleep(2);
-		printf("*quando você volta seu olhar a frente se depara com uma figura...\n");
-		sleep(2);
-		printf("%s: 'Uma fada, não sabia que ainda estão aqui após a guerra dorparia'\n", heroiescolhido.NOME);
-		sleep(2);
-		printf("FADA GENARI: 'Viajante da floresta?'\nFADA GENARI: 'Tome cuidado, as criaturas estão rondando hoje'\n");
-		printf("------------------------------\n");
-
-		int escolha3;
-
-		sleep(2);
-
-		do {
-
-			printf("Qual será sua decisão?\n1- Continuar andando    2- Voltar e escolher outro lugar\n");
-			scanf("%d", &escolha3);
-
-		} while (escolha3 < 1 || escolha3 > 2);
-
-		limparTela();
-
-		//continuar andando
-		if (escolha3 == 1) {
-			printf("*andando\n");
-			printf("");
-
-			//batalha BRITUS
-			printf("!!!!!!!!BATALHA!!!!!!!\n\n");
-			printf("Aperte uma tecla para batalhar: ");
-			getchar();
-			scanf("%c", &teclabatalha);
-			printf("\n");
-
-
-			if ( teclabatalha != '\0') {
-
-				while (BRITUS.VIDA > 0) {
-					BRITUS.VIDA = LUTA (
-					                  BRITUS.VIDA,
-					                  BRITUS.ATAQUE,
-					                  heroiescolhido.VIDA,
-					                  heroiescolhido.ATAQUE,
-					                  heroiescolhido.DEFESA);
-				}
-
-				if (BRITUS.VIDA <= 0)
-					printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
+			if (escolha1 == 1) {
+				sleep(2);
+				printf("Parabéns!\n");
+				sleep(2);
+				printf("Seu herói ganhou 5 moedas\n");
+				heroiescolhido.moedas += 5;
+				sleep(2);
 			}
 
-			//voltar para escolher outro lugar
-			else {
-				printf("*voltando\n");
+			else if (escolha1 == 2) {
+				printf("Era uma emboscada, assim que você não ajudou a criança...\n");
+				sleep(2);
+				printf("Alguns homens apareceram para te roubar.\n");
+				sleep(2);
+				printf("Você tentou lutar, mas perdeu 5 de vida e 5 moedas.\n");
+				sleep(2);
+
+				heroiescolhido.moedas -= 5;
+				heroiescolhido.VIDA -= 5;
+				sleep(2);
+			}
+
+			limparTela();
+
+			printf("------------------------------\n");
+
+			printf("Após essa escolha, veja a situação do seu herói:\n");
+
+			IMPRIME_SITU(heroiescolhido.VIDA, heroiescolhido.moedas);
+			sleep(2);
+
+			printf("------------------------------\n");
+
+			sleep(2);
+
+			limparTela();
+
+			printf("*Continuando sua caminhada...*\n");
+			sleep(2);
+
+			printf("%s: 'Estou com fome, vamos procurar algo para comer.'\n",
+			       heroiescolhido.NOME);
+			sleep(2);
+
+			printf("Olhando ao redor, percebe uma loja de armas.\n");
+
+			int escolha2;
+
+			do {
+				printf("Deseja entrar para comprar alguma arma?\n");
+				printf("1 - Sim\n");
+				printf("2 - Não\n");
+
+				scanf("%d", &escolha2);
+
+			} while (escolha2 > 2 || escolha2 < 1);
+
+			if (escolha2 == 1) {
+
+				printf("------------------------------\n");
+				printf("SEM ARMAS DISPONÍVEIS NO NÍVEL 1!\n");
+				printf("------------------------------\n");
+			}
+
+			limparTela();
+
+			printf("Ao olhar para os lados, um brilho encontra seu olho.\n");
+			sleep(2);
+			printf("%s: 'O que será isso?'\n", heroiescolhido.NOME);
+			sleep(2);
+			printf("*andando em direção ao brilho.\n");
+			sleep(2);
+			printf("Algo está brilhando...\n");
+			sleep(2);
+			printf("------------------------------\n");
+			printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
+			printf("------------------------------\n");
+			sleep(2);
+
+			sleep(2);
+			limparTela();
+
+			printf("------------------------------\n");
+			printf("NÍVEL 1 FINALIZADO\n");
+			printf("------------------------------\n\n");
+			sleep(2);
+		}
+
+		// ESCOLHA 2 - Floresta Sombria
+		else if (ESCOLHA_LUGAR == 2) {
+
+			printf("*andando\n");
+			sleep(2);
+			printf("*olhando as colinas e as montanhas através de uma fresta da árvore\n");
+			sleep(2);
+			printf("*quando você volta seu olhar a frente se depara com uma figura...\n");
+			sleep(2);
+			printf("%s: 'Uma fada, não sabia que ainda estão aqui após a guerra dorparia'\n", heroiescolhido.NOME);
+			sleep(2);
+			printf("FADA GENARI: 'Viajante da floresta?'\nFADA GENARI: 'Tome cuidado, as criaturas estão rondando hoje'\n");
+			sleep(2);
+			printf("------------------------------\n");
+
+			int escolha3;
+
+			sleep(2);
+
+			do {
+
+				printf("Qual será sua decisão?\n1- Continuar andando    2- Voltar e escolher outro lugar\n");
+				scanf("%d", &escolha3);
+
+			} while (escolha3 < 1 || escolha3 > 2);
+
+			limparTela();
+
+			//continuar andando
+			if (escolha3 == 1) {
+				printf("*andando\n");
+				sleep(2);
+				printf("*uma grande colina a frente");
+				sleep(2);
+				printf("*escala ela");
+				sleep(1);
+				printf("*deita observando o céu");
+				sleep(2)
 				printf("*aparece Britus (um monstro com aparência de uma pedra gigante)\n");
 				sleep(2);
 				printf("BRITUS: 'ora..ora...ora...se não é o(a) %s'\n", heroiescolhido.NOME);
@@ -370,6 +364,8 @@ int main() {
 				sleep(2);
 				printf("BRITUS: 'prepare-se para morrer!'\n\n");
 				sleep(2);
+
+				//batalha BRITUS
 				printf("!!!!!!!!BATALHA!!!!!!!\n\n");
 				printf("Aperte uma tecla para batalhar: ");
 				getchar();
@@ -391,34 +387,133 @@ int main() {
 					if (BRITUS.VIDA <= 0)
 						printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
 				}
+
+				//voltar para escolher outro lugar
+				else {
+					printf("*voltando\n");
+					printf("*aparece Britus (um monstro com aparência de uma pedra gigante)\n");
+					sleep(2);
+					printf("BRITUS: 'ora..ora...ora...se não é o(a) %s'\n", heroiescolhido.NOME);
+					sleep(2);
+					printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA'\n");
+					sleep(2);
+					printf("BRITUS: 'prepare-se para morrer!'\n\n");
+					sleep(2);
+					printf("!!!!!!!!BATALHA!!!!!!!\n\n");
+					printf("Aperte uma tecla para batalhar: ");
+					getchar();
+					scanf("%c", &teclabatalha);
+					printf("\n");
+
+
+					if ( teclabatalha != '\0') {
+
+						while (BRITUS.VIDA > 0) {
+							BRITUS.VIDA = LUTA (
+							                  BRITUS.VIDA,
+							                  BRITUS.ATAQUE,
+							                  heroiescolhido.VIDA,
+							                  heroiescolhido.ATAQUE,
+							                  heroiescolhido.DEFESA);
+						}
+
+						if (BRITUS.VIDA <= 0)
+							printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
+					}
+				}
+
+				printf("*algo cai do bolso de BRITUS após sua violenta queda ao chão\n");
+				sleep(2);
+				printf("*você se aproxima e observa\n");
+				sleep(2);
+				printf("%s: 'Um saco de balas?'\n", heroiescolhido.NOME);
+				sleep(2);
+				printf("Porém, ao observar atentamente....\n");
+				sleep(2);
+				printf("%s: 'O CRISTAL! NÃO POSSO ACREDITAR.\n", heroiescolhido.NOME);
+				sleep(2);
+				printf("------------------------------\n");
+				printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
+				printf("------------------------------\n");
+
+				sleep(3);
+
+				limparTela();
+
+				printf("------FIM DO NÍVEL 1------\n");
 			}
-
-			printf("*algo cai do bolso de BRITUS após sua violenta queda ao chão\n");
-			sleep(2);
-			printf("*você se aproxima e observa\n");
-			sleep(2);
-			printf("%s: 'Um saco de balas?'\n", heroiescolhido.NOME);
-			sleep(2);
-			printf("Porém, ao observar atentamente....\n");
-			sleep(2);
-			printf("%s: 'O CRISTAL! NÃO POSSO ACREDITAR.\n", heroiescolhido.NOME);
-			sleep(2);
-			printf("------------------------------\n");
-			printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
-			printf("------------------------------\n");
-
-			sleep(3);
-
-			limparTela();
-
-			printf("------FIM DO NÍVEL 1------\n");
 		}
 
-		// ESCOLHA 3 - Montanha de Ferro
+		// ESCOLHA 3 -
 		else if (ESCOLHA_LUGAR == 3) {
-
+		    
+			printf("*andando\n");
+			sleep(2);
+			printf("*encontra uma mina abandonada pelos antigos anões de Eldoria\n");
+			sleep(2);
+			printf("*aproxima do local\n");
+			sleep(2);
+			printf("%s: 'O último fragmento estará aqui...'\n", heroiescolhido.NOME);
+			sleep(2);
+			printf("*encontra um Guardião de Pedra\n");
+			sleep(2);
+			printf("GUARDIÃO DA PEDRA: 'Eu já o(a) aguardava'\n");
+			sleep(2);
+			printf("GUARDIÃO DA PEDRA: 'Complete o desafio e se mostre merecedor da pedra'\n");
+			sleep(2);
+			printf("*olha ao redor e visualiza uma enorme porta trancada entre estátuas dos ancestrais do templo\n");
+			sleep(3);
+			
+			limparTela();
+			
+			int ESCOLHA_DESAFIO;
+			
+			int tentativas = 0;
+			
+			while (tentativas < 3) {
+			    
+			    printf("VOCÊ TEM %d TENTATIVAS!\n\n", &tentativas);
+			    
+			    do {
+			    
+			        printf("--- ENIGMA DA PORTA ---\n");
+                    printf("\"Quanto mais de mim você tira, maior eu fico. O que eu sou?\"\n\n");
+                    printf("1 - O Silêncio\n");
+                    printf("2 - Um Buraco\n");
+                    printf("3 - A Sombra\n");
+                    printf("Escolha a sua resposta: ");
+                    scanf("%d", &resposta_enigma);
+			    
+			    } while (ESCOLHA_DESAFIO > 3 || ESCOLHA_DESAFIO < 1);
+			    
+			    if (ESCOLHA_DESAFIO == 2 ){
+			        
+			        printf("*as portas de abrem\n");
+			        sleep(2);
+			        printf("*andando para dentro do templo \n");
+			        sleep(2);
+			        printf("*o fragmento mais brilhante já visto está logo as suas mãos\n");
+			        sleep(2);
+			        printf("GUARDIÃO DA PEDRA: 'Parabéns meu(minha) jovem!\n");
+			        sleep(2);
+			        printf("GUARDIÃO DA PEDRA: 'Com os fragmentos você conseguirá salvar o mundo\n");
+			        sleep(3);
+			        
+			        limparTela();
+			        
+			        printf("------------------------------\n");
+                    printf("VOCÊ ENCONTROU UM FRAMENTO!!\n");
+                    printf("------------------------------\n");
+                    sleep(3);
+                    break;
+			    }
+			    
+			    else 
+			        printf("Tente novamente!\n");
+			}
 		}
 
-		return 0;
 	}
+
+    return 0;
 }
