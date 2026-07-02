@@ -106,6 +106,9 @@ int main() {
 	setlocale(LC_ALL, ""); //para a função de acentuações funcionar
 
 	char teclabatalha = '\0';
+	char teclacontinuar = '\0';
+	char teclacontinuar2 = '\0';
+	char teclacontinuar3 = '\0';
 
 	int TECLA_INICIO;
 
@@ -113,29 +116,40 @@ int main() {
 
 		printf("\n\n------------------------------\n");
 		printf("------BEM VINDO AO JOGO-------\n");
+		printf("------------------------------\n");
+		printf("------------------------------\n");
+		printf("-----O REINO DE DORPARINA-----\n");
 		printf("------------------------------\n\n");
 		printf("Aperte '1' para começar: ");
 		scanf("%d", &TECLA_INICIO);
 
 		if (TECLA_INICIO != 1)
-			printf("Tecla inválida, tente novamente\n");
+			printf("\nTecla inválida, tente novamente\n");
 
 		else if (TECLA_INICIO == 1) {
 
 			getchar();
 
-			printf("Há muitos anos existia o Cristal de Dorparia,");
+			limparTela();
+
+			printf("\nHá muitos anos existia o Cristal de Dorparia,");
 			sleep(2);
-			printf("responsável por manter o equilíbrio entre as terras de Eldoria.\n");
+			printf(" responsável por manter o equilíbrio entre as terras de Eldoria.\n");
 			sleep(2);
-			printf("Durante a Guerra de Dorparia, o cristal foi destruído em três fragmentos e espalhado pelo mundo.\n");
+			printf("Durante a Guerra de Dorparia, o cristal foi destruído em três fragmentos e espalhados pelo mundo.\n");
 			sleep(3);
 			printf("Agora um antigo senhor das trevas, Malthor, está reunindo esses fragmentos para dominar o reino.\n");
 			sleep(3);
 			printf("O herói é escolhido para encontrar os três fragmentos antes dele.\nCada mapa guarda um fragmento...\n");
 			sleep(3);
-			printf("Boa jornada! E não se esqueça: CADA MAPA GUARDA UM FRAGMENTO\n");
-			sleep(3);
+			printf("Boa jornada!\n");
+
+			printf("\nAperte uma tecla para continuar: ");
+			scanf("%c", &teclacontinuar);
+			printf("\n");
+
+			if ( teclacontinuar != '\0')
+				break;
 		}
 
 	} while (TECLA_INICIO != 1);
@@ -144,16 +158,22 @@ int main() {
 
 	int ESCOLHA_HEROI;
 
+
+	//ATÉ AQUI CONFERIDO -------------------------------------------------------------------------------------------
+
+
+
 	do {
-		printf("------------------------------\n\n");
-		printf("Escolha seu herói:\n");
+		printf("------------------------------\n");
+		printf("Escolha seu herói:\n\n");
 
 		EXIBE_HEROIS();
 		scanf("%d", &ESCOLHA_HEROI);
 
 	} while (ESCOLHA_HEROI > 3 || ESCOLHA_HEROI < 1);
 
-	printf("Boa escolha guerreiro(a)!\n");
+	printf("\nBoa escolha guerreiro(a)!\n");
+	sleep(2);
 
 	limparTela();
 
@@ -190,17 +210,18 @@ int main() {
 	BRITUS.ATAQUE = 8;
 
 	int ESCOLHA_LUGAR;
+    
+    int cristais = 0;
 
-
-	for (int i=0; i < 3; i++) {
+	while (cristais < 3) {
 
 		do {
-			printf("------------------------------\n\n");
+			printf("------------------------------\n");
 
-			printf("Um mundo a explorar...\n");
+			printf("Um mundo a explorar...\n\n");
 			printf("1 - Vila Eldoria\n");
 			printf("2 - Floresta Sombria\n");
-			printf("3 - Montanha de Ferro\n");
+			printf("3 - Montanha de Ferro\n\n");
 			printf("Qual será seu caminho hoje?\n");
 
 			scanf("%d", &ESCOLHA_LUGAR);
@@ -220,7 +241,7 @@ int main() {
 			printf("*Avista uma criança à frente*\n");
 			sleep(2);
 
-			printf("CRIANÇA: 'Olá bom moço(a), poderia me ajudar?'\n");
+			printf("CRIANÇA: 'Olá bom moço(a), poderia me ajudar?'\n\n");
 
 			do {
 				printf("Qual sua escolha?\n");
@@ -230,10 +251,11 @@ int main() {
 
 			} while (escolha1 > 2 || escolha1 < 1);
 
+			printf("\n");
+
 			if (escolha1 == 1) {
-				sleep(2);
 				printf("Parabéns!\n");
-				sleep(2);
+				sleep(1);
 				printf("Seu herói ganhou 5 moedas\n");
 				heroiescolhido.moedas += 5;
 				sleep(2);
@@ -254,16 +276,24 @@ int main() {
 
 			limparTela();
 
+			sleep(2);
+
 			printf("------------------------------\n");
 
 			printf("Após essa escolha, veja a situação do seu herói:\n");
 
 			IMPRIME_SITU(heroiescolhido.VIDA, heroiescolhido.moedas);
-			sleep(2);
 
 			printf("------------------------------\n");
 
-			sleep(2);
+			//tecla continuar 2
+
+			getchar();
+			printf("\nAperte uma tecla para continuar: ");
+			scanf("%c", &teclacontinuar2);
+			printf("\n");
+
+			sleep(1);
 
 			limparTela();
 
@@ -289,13 +319,22 @@ int main() {
 
 			if (escolha2 == 1) {
 
+
+				limparTela();
 				printf("------------------------------\n");
-				printf("SEM ARMAS DISPONÍVEIS NO NÍVEL 1!\n");
+				printf("SEM ARMAS DISPONÍVEIS\n");
 				printf("------------------------------\n");
+
+				getchar();
+
+				printf("\nAperte uma tecla para continuar: ");
+				scanf("%c", &teclacontinuar3);
+				printf("\n");
 			}
 
 			limparTela();
 
+			sleep(2);
 			printf("Ao olhar para os lados, um brilho encontra seu olho.\n");
 			sleep(2);
 			printf("%s: 'O que será isso?'\n", heroiescolhido.NOME);
@@ -307,15 +346,13 @@ int main() {
 			printf("------------------------------\n");
 			printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
 			printf("------------------------------\n");
-			sleep(2);
 
-			sleep(2);
+			cristais++;
+            
+            printf("\nQUANTIDADE DE CRITAIS NO INVENTÁRIO: %d\n", cristais);
+            
+			sleep(5);
 			limparTela();
-
-			printf("------------------------------\n");
-			printf("NÍVEL 1 FINALIZADO\n");
-			printf("------------------------------\n\n");
-			sleep(2);
 		}
 
 		// ESCOLHA 2 - Floresta Sombria
@@ -355,7 +392,7 @@ int main() {
 				printf("*escala ela");
 				sleep(1);
 				printf("*deita observando o céu");
-				sleep(2)
+				sleep(2);
 				printf("*aparece Britus (um monstro com aparência de uma pedra gigante)\n");
 				sleep(2);
 				printf("BRITUS: 'ora..ora...ora...se não é o(a) %s'\n", heroiescolhido.NOME);
@@ -436,17 +473,20 @@ int main() {
 				printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
 				printf("------------------------------\n");
 
-				sleep(3);
+				cristais++;
+				
+				
+                printf("\nQUANTIDADE DE CRITAIS NO INVENTÁRIO: %d\n", cristais);
+
+				sleep(5);
 
 				limparTela();
-
-				printf("------FIM DO NÍVEL 1------\n");
 			}
 		}
 
 		// ESCOLHA 3 -
 		else if (ESCOLHA_LUGAR == 3) {
-		    
+
 			printf("*andando\n");
 			sleep(2);
 			printf("*encontra uma mina abandonada pelos antigos anões de Eldoria\n");
@@ -463,57 +503,63 @@ int main() {
 			sleep(2);
 			printf("*olha ao redor e visualiza uma enorme porta trancada entre estátuas dos ancestrais do templo\n");
 			sleep(3);
-			
+
 			limparTela();
-			
+
 			int ESCOLHA_DESAFIO;
-			
+
 			int tentativas = 0;
-			
+
 			while (tentativas < 3) {
-			    
-			    printf("VOCÊ TEM %d TENTATIVAS!\n\n", &tentativas);
-			    
-			    do {
-			    
-			        printf("--- ENIGMA DA PORTA ---\n");
-                    printf("\"Quanto mais de mim você tira, maior eu fico. O que eu sou?\"\n\n");
-                    printf("1 - O Silêncio\n");
-                    printf("2 - Um Buraco\n");
-                    printf("3 - A Sombra\n");
-                    printf("Escolha a sua resposta: ");
-                    scanf("%d", &resposta_enigma);
-			    
-			    } while (ESCOLHA_DESAFIO > 3 || ESCOLHA_DESAFIO < 1);
-			    
-			    if (ESCOLHA_DESAFIO == 2 ){
-			        
-			        printf("*as portas de abrem\n");
-			        sleep(2);
-			        printf("*andando para dentro do templo \n");
-			        sleep(2);
-			        printf("*o fragmento mais brilhante já visto está logo as suas mãos\n");
-			        sleep(2);
-			        printf("GUARDIÃO DA PEDRA: 'Parabéns meu(minha) jovem!\n");
-			        sleep(2);
-			        printf("GUARDIÃO DA PEDRA: 'Com os fragmentos você conseguirá salvar o mundo\n");
-			        sleep(3);
-			        
-			        limparTela();
-			        
-			        printf("------------------------------\n");
-                    printf("VOCÊ ENCONTROU UM FRAMENTO!!\n");
-                    printf("------------------------------\n");
-                    sleep(3);
-                    break;
-			    }
-			    
-			    else 
-			        printf("Tente novamente!\n");
+
+				printf("VOCÊ TEM %d TENTATIVAS!\n\n", &tentativas);
+
+				do {
+
+					printf("--- ENIGMA DA PORTA ---\n");
+					printf("\"Quanto mais de mim você tira, maior eu fico. O que eu sou?\"\n\n");
+					printf("1 - O Silêncio\n");
+					printf("2 - Um Buraco\n");
+					printf("3 - A Sombra\n");
+					printf("Escolha a sua resposta: ");
+					scanf("%d", &ESCOLHA_DESAFIO);
+
+				} while (ESCOLHA_DESAFIO > 3 || ESCOLHA_DESAFIO < 1);
+
+				if (ESCOLHA_DESAFIO == 2 ) {
+
+					printf("*as portas de abrem\n");
+					sleep(2);
+					printf("*andando para dentro do templo \n");
+					sleep(2);
+					printf("*o fragmento mais brilhante já visto está logo as suas mãos\n");
+					sleep(2);
+					printf("GUARDIÃO DA PEDRA: 'Parabéns meu(minha) jovem!\n");
+					sleep(2);
+					printf("GUARDIÃO DA PEDRA: 'Com os fragmentos você conseguirá salvar o mundo\n");
+					sleep(3);
+
+					limparTela();
+
+					printf("------------------------------\n");
+					printf("✨ VOCÊ ENCONTROU O CRISTAL! ✨\n");
+					printf("------------------------------\n");
+
+					cristais++;
+					
+					
+                    printf("\nQUANTIDADE DE CRITAIS NO INVENTÁRIO: %d\n", cristais);
+
+					sleep(3);
+					break;
+				}
+
+				else
+					printf("Tente novamente!\n");
 			}
 		}
 
 	}
 
-    return 0;
+	return 0;
 }
