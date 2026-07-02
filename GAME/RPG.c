@@ -387,11 +387,11 @@ int main() {
 			if (escolha3 == 1) {
 				printf("*andando\n");
 				sleep(2);
-				printf("*uma grande colina a frente");
+				printf("*uma grande colina a frente\n");
 				sleep(2);
-				printf("*escala ela");
+				printf("*escala ela\n");
 				sleep(1);
-				printf("*deita observando o céu");
+				printf("*deita observando o céu\n");
 				sleep(2);
 				printf("*aparece Britus (um monstro com aparência de uma pedra gigante)\n");
 				sleep(2);
@@ -400,7 +400,9 @@ int main() {
 				printf("BRITUS: 'já ouvi falar muito sobre você, e agora você está aqui HAHAHA'\n");
 				sleep(2);
 				printf("BRITUS: 'prepare-se para morrer!'\n\n");
-				sleep(2);
+				sleep(3);
+				
+				limparTela();
 
 				//batalha BRITUS
 				printf("!!!!!!!!BATALHA!!!!!!!\n\n");
@@ -458,7 +460,10 @@ int main() {
 							printf("Parabéns %s, você ganhou sua primeira batalha.\n\n", heroiescolhido.NOME);
 					}
 				}
-
+                
+                limparTela();
+                
+                sleep(3);
 				printf("*algo cai do bolso de BRITUS após sua violenta queda ao chão\n");
 				sleep(2);
 				printf("*você se aproxima e observa\n");
